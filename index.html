@@ -97,6 +97,38 @@ td a {
   flex-shrink: 0;
 }
 
+/* Header */
+.site-header .logo {
+  width: 512px;
+  height: 172px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo container */
+.site-header .logo {
+  width: 512px;
+  height: 172px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo image */
+.site-header .logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;   /* KEY: prevents cutting */
+}
+
+@media (max-width: 600px) {
+  .site-header .logo {
+    width: 260px;
+    height: auto;
+  }
+}
+
 /* Footer */
 #footer {
   transition: opacity 0.5s ease-in-out;
@@ -146,6 +178,12 @@ td a {
     </style>
 </head>
 <body>
+
+  <div class="site-header">
+    <div class="logo">
+      <img src="logo.png">
+    </div>
+  </div>
 
   <div class="marquee-container">
     I.T. World – Your Trusted Tech Partner | Contact : 7558459949 | Email : itworldvasai@gmail.com
