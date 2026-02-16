@@ -193,7 +193,7 @@ td a {
 
 <table>
   <tr>
-    <td><a href="https://accounts.google.com/signin/v2/identifier?service=mail"><img class="favicon" alt=""> Gmail</a></td>
+    <td><a href="https://accounts.google.com/v3/signin/identifier?dsh=S-1710483100%3A1771274809470780&ifkv=ASfE1-rA6j73k11ACRl2BXXj6PjbO_IhLCpLe10x9bzp3VDZfcsGQ0pz7C0xixz4UBCE9BW5KnHFoA&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img class="favicon" alt=""> Gmail</a></td>
     <td><a href="https://outlook.live.com/owa/"><img class="favicon" alt=""> Outlook</a></td>
     <td><a href="https://mail.yahoo.com/"><img class="favicon" alt=""> Yahoo</a></td>
     <td><a href="https://mail.rediff.com/cgi-bin/login.cgi"><img class="favicon" alt=""> Rediff</a></td>
@@ -237,16 +237,31 @@ td a {
 </tr>
 </table>
 
-  <script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll('a').forEach(link => {
     const img = link.querySelector('.favicon');
     if (!img) return;
-
-    const url = new URL(link.href);
-    img.src = `https://www.google.com/s2/favicons?sz=64&domain=${url.hostname}`;
+    try {
+      const url = new URL(link.href);
+      let domain = url.hostname;
+      // Special fix for WhatsApp
+      if (domain.includes("whatsapp.com")) {
+        domain = "whatsapp.com";
+      }
+      const googleIcon = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
+      const horseIcon = `https://icon.horse/icon/${domain}`;
+      img.src = googleIcon;
+      img.onerror = function () {
+        this.onerror = null;
+        this.src = horseIcon;
+      };
+    } catch (e) {
+      console.log("Invalid URL:", link.href);
+    }
   });
+});
 </script>
-
 
 	<!-- Footer -->
 	<footer id="footer">
@@ -256,5 +271,3 @@ td a {
 	</footer>
 </body>
 </html>
-
-
