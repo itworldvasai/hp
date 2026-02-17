@@ -1,273 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HomePage</title>
-  <link rel="shortcut icon" href="https://img.icons8.com/cotton/512/000000/shutdown--v1.png"/>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://kit.fontawesome.com/4726f56333.js" crossorigin="anonymous"></script>
-    <style>
-      /* General Page Styles */
-body {
-  font-family: "Comic Sans MS", "Courier New", monospace;
-  margin: 20px;
-}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>I.T. World</title>
 
-/* Centering Utility */
-.center {
-  text-align: center;
-}
+<link rel="shortcut icon" type="image/png" href="fav.jpeg">
 
-/* Marquee Style */
-.marquee-container {
-  background-color: #eee;
-  padding: 10px;
-  font-style: italic;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333333;
-}
-/* Reset default spacing */
+<style>
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background: #f4f6f9;
 }
 
-table {
-  width: 100vw;              /* full screen width */
-  border-collapse: collapse;
-  margin: 0;
-}
-
-td {
-  padding: 12px;
-  border: 1px solid #ddd;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  table,
-  tr,
-  td {
-    display: block;
-    width: 100%;
-  }
-
-  tr {
-    margin: 0;               /* remove row gaps */
-  }
-
-  td {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-left: none;
-    border-right: none;
-  }
-
-  td a {
-    display: block;
-    width: 100%;
-  }
-}
-
-/* ===== DESKTOP ===== */
-@media (min-width: 769px) {
-  table {
-    width: 100%;
-  }
-
-  td {
-    width: 25%;
-    text-align: center;
-  }
-}
-
-td a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.favicon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-/* Header */
-.site-header .logo {
-  width: 512px;
-  height: 172px;
+/* ================= HEADER ================= */
+.site-header {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 40px;
+  padding: 20px;
+  background: white;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Logo container */
-.site-header .logo {
-  width: 512px;
-  height: 172px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logo img {
+  max-width: 250px;
+  max-height: 170px;
+  object-fit: contain;
 }
 
-/* Logo image */
-.site-header .logo img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;   /* KEY: prevents cutting */
+.services {
+  max-width: 280px;
 }
 
-@media (max-width: 600px) {
-  .site-header .logo {
-    width: 260px;
-    height: auto;
-  }
+.services h3 {
+  margin-bottom: 10px;
+  color: #1a73e8;
 }
 
-/* Footer */
-#footer {
-  transition: opacity 0.5s ease-in-out;
-  color: rgb(240, 16, 0);
-  opacity: 0.5;
-
-  position: relative;   /* NOT absolute */
-  margin-top: auto;     /* pushes footer to bottom */
-  padding: 2em;
-
-  text-align: center;
-}
-
-#footer:hover {
-  opacity: 1;
-}
-
-#footer .icons {
-  margin: 0 0 0.5em 0;
-}
-
-#footer .copyright {
-  font-size: 0.9em;
+.services ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-#footer .copyright li {
-  border-left: solid 1px rgba(255, 255, 255, 0.397);
+.services li {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+/* ================= MODERN MARQUEE ================= */
+.marquee-container {
+  background: #1a73e8;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.marquee-text {
   display: inline-block;
-  line-height: 1em;
-  margin-left: 0.75em;
-  padding-left: 0.75em;
+  padding: 12px 0;
+  animation: scrollText 18s linear infinite;
 }
 
-#footer .copyright li:first-child {
-  border-left: 0;
-  margin-left: 0;
-  padding-left: 0;
+@keyframes scrollText {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
-#footer .copyright a {
-  color: inherit;
+/* ================= CARD GRID ================= */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 20px;
+  padding: 30px;
 }
 
-    </style>
+.card {
+  display: flex;                 /* IMPORTANT */
+  align-items: center;           /* vertical align */
+  justify-content: center;       /* center content */
+  gap: 10px;                     /* space between icon & text */
+
+  background: white;
+  padding: 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
+}
+
+.card img {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.25s ease;
+}
+
+/* Hover Effects */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  background: #1a73e8;
+  color: white;
+}
+
+/* Small icon animation instead of invert */
+.card:hover img {
+  transform: scale(1.15);
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: white;
+  font-size: 14px;
+  margin-top: 20px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .site-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
 </head>
+
 <body>
 
+<!-- HEADER -->
 <div class="site-header">
-  <div class="logo">
-    <a href="https://www.itworldhub.in/" target="_blank">
-      <img src="logo.png" alt="IT World Logo">
-    </a>
+
+  <div class="services">
+    <h3>Our Services:</h3>
+    <ul>
+      <li>Laptops & Desktops (New & Refurbished)</li>
+      <li>Repairs & Maintenance</li>
+      <li>IT Hardware & Accessories</li>
+    </ul>
+  </div>
+
+<div class="logo">
+  <a href="https://www.itworldhub.in/" target="_blank">
+    <img src="logo.png" alt="IT World Logo">
+  </a>
+</div>
+
+  <div class="services">
+    <ul>
+      <li>Software Installation & Licensing</li>
+      <li>Security Solutions & Antivirus</li>
+      <li>Cloud & IT Support Services</li>
+      <li>CCTV Camera Sales & Services</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- MODERN MARQUEE -->
+<div class="marquee-container">
+  <div class="marquee-text">
+    I.T. World – Your Trusted Tech Partner | Contact: +91 75584 59949 | +91 96658 65056 | Email: itworldvasai@gmail.com
   </div>
 </div>
 
-  <div class="marquee-container">
-    I.T. World – Your Trusted Tech Partner | Contact : +91 75584 59949 | +91 96658 65056 | Email : itworldvasai@gmail.com
-  </div>
+<!-- MODERN GRID LINKS -->
+<div class="links-grid">
 
-<table>
-  <tr>
-    <td><a href="https://accounts.google.com/v3/signin/identifier?dsh=S-1710483100%3A1771274809470780&ifkv=ASfE1-rA6j73k11ACRl2BXXj6PjbO_IhLCpLe10x9bzp3VDZfcsGQ0pz7C0xixz4UBCE9BW5KnHFoA&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img class="favicon" alt=""> Gmail</a></td>
-    <td><a href="https://outlook.live.com/owa/"><img class="favicon" alt=""> Outlook</a></td>
-    <td><a href="https://mail.yahoo.com/"><img class="favicon" alt=""> Yahoo</a></td>
-    <td><a href="https://mail.rediff.com/cgi-bin/login.cgi"><img class="favicon" alt=""> Rediff</a></td>
-  </tr>
-  <tr>
-    <td><a href="https://www.zoho.com/mail/"><img class="favicon" alt=""> Zoho</a></td>
-    <td><a href="https://www.youtube.com/"><img class="favicon" alt=""> YouTube</a></td>
-    <td><a href="https://www.google.com/"><img class="favicon" alt=""> Google</a></td>
-    <td><a href="https://www.bing.com/"><img class="favicon" alt=""> Bing</a></td>
-  </tr>
-  <tr>
-    <td><a href="https://www.facebook.com/"><img class="favicon" alt=""> Facebook</a></td>
-    <td><a href="https://www.instagram.com/"><img class="favicon" alt=""> Instagram</a></td>
-    <td><a href="https://x.com/i/flow/login"><img class="favicon" alt=""> Twitter</a></td>
-    <td><a href="https://www.pinterest.com/"><img class="favicon" alt=""> Pinterest</a></td>
-  </tr>
-  <tr>
-    <td><a href="https://www.flipkart.com/"><img class="favicon" alt=""> Flipkart</a></td>
-    <td><a href="https://www.amazon.in/"><img class="favicon" alt=""> Amazon</a></td>
-    <td><a href="https://www.cashify.in/"><img class="favicon" alt=""> Cashify</a></td>
-    <td><a href="https://www.controlz.world/store"><img class="favicon" alt=""> Controlz</a></td>
-  </tr>
-  <tr>
-    <td><a href="https://chatgpt.com/"><img class="favicon" alt=""> ChatGPT</a></td>
-    <td><a href="https://gemini.google.com/app"><img class="favicon" alt=""> Gemini</a></td>
-    <td><a href="https://copilot.microsoft.com/"><img class="favicon" alt=""> Copilot</a></td>
-    <td><a href="https://grok.com/"><img class="favicon" alt=""> Grok</a></td>
-  </tr>
-  <tr>
-  <td><a href="https://web.whatsapp.com/"><img class="favicon" alt=""> WhatsApp Web</a></td>
-  <td><a href="https://messages.google.com/web/authentication"><img class="favicon" alt=""> Google Messages</a></td>
-  <td><a href="https://pdfcandy.com/tools.html"><img class="favicon" alt=""> PDFCandy</a></td>
-  <td><a href="https://transfer.it/start"><img class="favicon" alt=""> TransferIt</a></td>
-</tr>
+<a class="card" href="https://mail.google.com/">
+  <img class="favicon"> Gmail
+</a>
 
-<tr>
-    <td><a href="https://www.ilovepdf.com/"><img class="favicon" alt=""> iLovePDF</a></td>
-  <td><a href="https://imgcandy.com/"><img class="favicon" alt=""> ImgCandy</a></td>
-  <td><a href="https://www.qrcode-monkey.com/"><img class="favicon" alt=""> QR Code Monkey</a></td>
-  <td><a href="https://languagetool.org/"><img class="favicon" alt=""> LanguageTool</a></td>
-</tr>
-</table>
+<a class="card" href="https://outlook.live.com/">
+  <img class="favicon"> Outlook
+</a>
+
+<a class="card" href="https://mail.yahoo.com/">
+  <img class="favicon"> Yahoo
+</a>
+
+<a class="card" href="https://mail.rediff.com/">
+  <img class="favicon"> Rediff
+</a>
+
+<a class="card" href="https://www.zoho.com/mail/">
+  <img class="favicon"> Zoho
+</a>
+
+<a class="card" href="https://www.youtube.com/">
+  <img class="favicon"> YouTube
+</a>
+
+<a class="card" href="https://www.google.com/">
+  <img class="favicon"> Google
+</a>
+
+<a class="card" href="https://www.bing.com/">
+  <img class="favicon"> Bing
+</a>
+
+<a class="card" href="https://www.facebook.com/">
+  <img class="favicon"> Facebook
+</a>
+
+<a class="card" href="https://www.instagram.com/">
+  <img class="favicon"> Instagram
+</a>
+
+<a class="card" href="https://twitter.com/">
+  <img class="favicon"> Twitter
+</a>
+
+<a class="card" href="https://www.pinterest.com/">
+  <img class="favicon"> Pinterest
+</a>
+
+<a class="card" href="https://www.flipkart.com/">
+  <img class="favicon"> Flipkart
+</a>
+
+<a class="card" href="https://www.amazon.in/">
+  <img class="favicon"> Amazon
+</a>
+
+<a class="card" href="https://www.cashify.in/">
+  <img class="favicon"> Cashify
+</a>
+
+<a class="card" href="https://www.controlz.world/">
+  <img class="favicon"> Controlz
+</a>
+
+<a class="card" href="https://chat.openai.com/">
+  <img class="favicon"> ChatGPT
+</a>
+
+<a class="card" href="https://gemini.google.com/">
+  <img class="favicon"> Gemini
+</a>
+
+<a class="card" href="https://copilot.microsoft.com/">
+  <img class="favicon"> Copilot
+</a>
+
+<a class="card" href="https://grok.com/">
+  <img class="favicon"> Grok
+</a>
+
+<a class="card" href="https://web.whatsapp.com/">
+  <img class="favicon"> WhatsApp
+</a>
+
+<a class="card" href="https://messages.google.com/web/">
+  <img class="favicon"> Messages
+</a>
+
+<a class="card" href="https://pdfcandy.com/">
+  <img class="favicon"> PDFCandy
+</a>
+
+<a class="card" href="https://transfer.it/">
+  <img class="favicon"> TransferIt
+</a>
+
+<a class="card" href="https://www.ilovepdf.com/">
+  <img class="favicon"> iLovePDF
+</a>
+
+<a class="card" href="https://imgcandy.com/">
+  <img class="favicon"> ImgCandy
+</a>
+
+<a class="card" href="https://www.qrcode-monkey.com/">
+  <img class="favicon"> QR Code
+</a>
+
+<a class="card" href="https://languagetool.org/">
+  <img class="favicon"> LanguageTool
+</a>
+
+</div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('a').forEach(link => {
-    const img = link.querySelector('.favicon');
-    if (!img) return;
-    try {
-      const url = new URL(link.href);
-      let domain = url.hostname;
-      // Special fix for WhatsApp
-      if (domain.includes("whatsapp.com")) {
-        domain = "whatsapp.com";
-      }
-      const googleIcon = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
-      const horseIcon = `https://icon.horse/icon/${domain}`;
-      img.src = googleIcon;
-      img.onerror = function () {
-        this.onerror = null;
-        this.src = horseIcon;
-      };
-    } catch (e) {
-      console.log("Invalid URL:", link.href);
-    }
-  });
+document.querySelectorAll(".favicon").forEach(img => {
+  const link = img.closest("a");
+  let domain = new URL(link.href).hostname;
+
+  // FIX Gmail
+  if (domain.includes("google")) {
+    domain = "google.com";
+  }
+
+  // FIX WhatsApp
+  if (domain.includes("whatsapp")) {
+    domain = "whatsapp.com";
+  }
+
+  // Primary favicon source
+  img.src = "https://www.google.com/s2/favicons?sz=64&domain=" + domain;
+
+  // Fallback if Google fails
+  img.onerror = function() {
+    this.src = "https://" + domain + "/favicon.ico";
+  };
 });
 </script>
 
-	<!-- Footer -->
-	<footer id="footer">
-		<ul class="copyright">
-			<li>Information is eternal, computers are ephemeral, backup is the savior.</li>
-		</ul>
-	</footer>
+<!-- FOOTER -->
+<footer>
+    Information is eternal, computers are ephemeral, backup is the savior.
+</footer>
+
 </body>
 </html>
